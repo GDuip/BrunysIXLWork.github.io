@@ -1,35 +1,50 @@
         
-        function getCPUUsage() {
-            
-            return Math.floor(Math.random() * 100);
-        }
+        class PerformanceMonitor {
+  constructor() {
+    this.lastFrameTime = performance.now();
+    this.frameCount = 0;
+    this.fps = 0;
+    this.cpuUsage = 0;
+  }
 
-        
-        let lastFrameTime = performance.now();
-        let frameCount = 0;
-        let fps = 0;
+  getCPUUsage() {
+    try {
+      const cpuEntries = performance.getEntriesByType('measure');
+      const cpuEntry = cpuEntries[0];
+      return cpuEntry ? cpuEntry.duration : 0;
+    } catch (error) {
+      console.error('Error getting CPU usage:', error);
+      return 0;
+    }
+  }
 
-        function calculateFPS() {
-            const currentTime = performance.now();
-            frameCount++;
+  calculateFPS() {
+    const currentTime = performance.now();
+    this.frameCount++;
 
-            if (currentTime - lastFrameTime >= 1000) { 
-                fps = frameCount;
-                frameCount = 0;
-                lastFrameTime = currentTime;
-            }
-        }
+    if (currentTime - this.lastFrameTime >= 1000) {
+      this.fps = this.frameCount;
+      this.frameCount = 0;
+      this.lastFrameTime = currentTime;
+    }
+  }
 
-       
-        function updateOverlay() {
-            const cpuUsage = getCPUUsage();
-            const fpsRate = fps;
+  updateOverlay() {
+    this.cpuUsage = this.getCPUUsage();
+    const fpsRate = this.fps;
 
-            document.getElementById('cpuUsage').textContent = `CPU Usage: ${cpuUsage}%`;
-            document.getElementById('fpsRate').textContent = `FPS: ${fpsRate}`;
-        }
+    document.getElementById('cpuUsage').textContent = `CPU Usage: ${this.cpuUsage}%`;
+    document.getElementById('fpsRate').textContent = `FPS: ${fpsRate}`;
+  }
 
-        
-        setInterval(calculateFPS, 1000 / 60); 
-        setInterval(updateOverlay, 1000); 
-    
+  start() {
+    requestAnimationFrame(() => {
+      this.calculateFPS();
+      this.updateOverlay();
+      this.start();
+    });
+  }
+}
+
+const performanceMonitor = new PerformanceMonitor();
+performanceMonitor.start();
