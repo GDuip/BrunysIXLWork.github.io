@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const iframe = document.getElementById('myIframe');
+        document.addEventListener("DOMContentLoaded", function () {
+    const iframe = document.getElementById('content-frame');
     const urlParam = getQueryParam('url');
     const storedUrl = localStorage.getItem('iframeSrc');
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('Iframe URL set from localStorage:', storedUrl);
     } 
     else {
-        iframe.src = 'https://example.com'; 
+        iframe.src = '/404.html'; 
         console.log('Iframe URL set to default');
     }
 });
@@ -26,7 +26,7 @@ function getQueryParam(param) {
 }
 
 function toggleFullscreen() {
-    const iframe = document.getElementById('myIframe');
+    const iframe = document.getElementById('content-frame');
     if (iframe.requestFullscreen) {
         iframe.requestFullscreen();
     } else if (iframe.mozRequestFullScreen) { 
@@ -39,17 +39,7 @@ function toggleFullscreen() {
 }
 
 function refreshIframe() {
-    const iframe = document.getElementById('myIframe');
+    const iframe = document.getElementById('content-frame');
     iframe.src = iframe.src;  
     console.log('Iframe refreshed');
 }
-
-function goBack() {
-    
-    if (document.referrer) {
-      window.location.href = document.referrer;
-    } else {
-      
-      window.location.href = '/';
-    }
-  }

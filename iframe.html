@@ -1,5 +1,5 @@
 <html>
-    <head>
+<head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TFZ72L5FPQ"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -17,12 +17,12 @@
         <meta property="og:url" content="https://brunysixlwork.site">
         <meta name="theme-color" content="#0d0d0d">
         <meta name="msapplication-TileColor" content="#0d0d0d">
-        <link rel="stylesheet" href="/storage/css/launcher.css">
+        <link rel="stylesheet" href="/storage/css/gameframe.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="icon" type="image/x-icon" href="/storage/images/favicon.ico">
-    </head>
-    <body>
-        <div id="particles-js"></div>
+</head>
+<body>
+    <div id="particles-js"></div>
 
     <div id="loading-screen">
         <div class="dots">
@@ -33,26 +33,44 @@
         <p>Loading, please wait...</p>
     </div>
 
-
-    <div class="tab-bar">
-        <span>
-            <a href="javascript:void(0);" onclick="goBack()">
-              <h3>
-                <img src="/storage/images/logo.png" alt="Image" class="left-image">
-                BRUNYSIXLWORK
-              </h3>
+    <nav class="navbar">
+        <div class="left-nav">
+            <a href="/">
+                <img src="/storage/images/logo.png" alt="Logo" class="logo">
+                <h3>BRUNYSIXLWORK</h3>
             </a>
-          </span>
-        <div class="buttons">
-            <button onclick="goBack()"><i class="fa fa-arrow-left"></i></button>
-            <button onclick="goForward()"><i class="fa fa-arrow-right"></i></button>
-            <button onclick="refreshIframe()"><i class="fa fa-refresh"></i></button>
-            <button style="margin-right: 10px;" onclick="toggleFullscreen()"><i class="fa fa-expand"></i></button>
+        </div>
+
+        <div class="right-nav">
+            <a href="/games.html"><i class="fa-solid fa-gamepad"></i></a>
+            <a href="/apps.html"><i class="fa-solid fa-table-cells"></i></a>
+            <a href="/extra.html"><i class="fa-solid fa-plus"></i></a>
+            <a href="/settings.html"><i class="fa-solid fa-gear"></i></a>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    <br>
+    <div class="left-section">
+        <iframe src="about:blank" id="content-frame"></iframe>
+        <div class="text-box">
+            <h2>Ads?</h2>
+            <h3>Here at BrunysIXLWork there are no plans as of this year that we will be adding ads. BrunysIXLWork is being payed by anonymous to stay up and running. As of late 2026 will ads be added.</h3>
+        </div>
+        <div class="text-box">
+            <h2>Discord</h2>
+            <h3>Join our discord to get updates on the latest game updates or game fixes!</h3>
         </div>
     </div>
 
-    <div class="iframe-container">
-        <iframe id="myIframe" src="" allow="fullscreen"></iframe>
+    <div class="floating-box">
+        <img src="/storage/images/logo.png">
+    
+        <p>Controls</p>
+        <button onclick="toggleFullscreen()">Fullscreen</button>
+        <button onclick="refreshIframe()">Refresh</button>
+        <a href="/leaderboards.html"><button>Leaderboards</button></a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
@@ -61,9 +79,8 @@
     <script src="/storage/js/settings/cloak.js"></script>
     <script src="/storage/js/settings/data.js"></script>
     <script src="/storage/js/settings/settings.js"></script>
-    <script src="/storage/js/iframe.js"></script>
-    <script src="/storage/js/loadingscreen.js"></script>
     <script src="/storage/js/settings/anticlose.js"></script>
     <script src="/storage/js/settings/customcloak.js"></script>
-    </body>
+    <script src="/storage/js/iframe.js"></script>
+</body>
 </html>
